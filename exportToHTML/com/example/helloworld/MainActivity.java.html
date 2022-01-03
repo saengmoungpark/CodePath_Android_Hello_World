@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.helloworld</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+
+        <span class="s1">TextView textView = ((TextView) findViewById(R.id.text))</span><span class="s0">;</span>
+
+        <span class="s2">// User can tap a button to change the text color of the label</span>
+        <span class="s1">findViewById(R.id.button).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s2">// change the text color of the label</span>
+                <span class="s1">((TextView) findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.sky_blue))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s2">// User can tap a button to change the color of the background view</span>
+        <span class="s1">findViewById(R.id.changeBackgroundButton).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s2">// #CBC07E - gold</span>
+                <span class="s1">findViewById(R.id.parent).setBackgroundColor(getResources().getColor(R.color.gold))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s2">//User can tap a button to change the text string of a label - Android is Awesome!</span>
+        <span class="s1">findViewById(R.id.changeTextButton).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s1">((TextView) findViewById(R.id.text)).setText(</span><span class="s3">&quot;Android is Awesome!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s2">//User can tape on the background view to reset all views to default settings</span>
+
+        <span class="s1">findViewById(R.id.parent).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s2">// 1. Reset the text to &quot;Hello from Jacob&quot; id - text</span>
+                <span class="s1">textView.setText(</span><span class="s3">&quot;Hello from Jacob!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s2">// 2. Reset the color of the text to original color</span>
+                    <span class="s2">// original text color - black, text id - @id/text</span>
+                <span class="s1">textView.setTextColor(getResources().getColor(R.color.black))</span><span class="s0">;</span>
+                <span class="s2">// 3. Reset the background color</span>
+                    <span class="s2">// original background color - R.color.light_purple</span>
+                <span class="s1">findViewById(R.id.parent).setBackgroundColor(getResources().getColor(R.color.light_purple))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+        <span class="s2">// User can tap the &quot;Change text string&quot; button to update the label with the text string from the text field.</span>
+        <span class="s1">findViewById(R.id.changeCustomTextButton).setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+                <span class="s2">//change the text view to what's in the edit text view</span>
+                <span class="s1">String userEnteredText = ((EditText) findViewById(R.id.editText)).getText().toString()</span><span class="s0">;</span>
+
+                <span class="s2">//If the text field is empty, update label with default text string.</span>
+                <span class="s0">if </span><span class="s1">(userEnteredText.isEmpty()) {</span>
+                    <span class="s1">textView.setText(</span><span class="s3">&quot;Enter your own text!&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">textView.setText(userEnteredText)</span><span class="s0">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
