@@ -1,4 +1,3 @@
-# CodePath_Hello_World
 ## Hello World
 
 ### App Description
